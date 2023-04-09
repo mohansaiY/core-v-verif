@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CORE-V CV32A6-step1 Design Verification Plan documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #DDDDDD" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            CORE-V CV32A6-step1 Design Verification Plan
+              <img src="_static/openhw-landscape.svg" class="logo" alt="Logo"/>
+          </a>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-dvplan_intro">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-dvplan_csr-access">Module: CSR ACCESS VERIFICATION</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #DDDDDD" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">CORE-V CV32A6-step1 Design Verification Plan</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CORE-V CV32A6-step1 Design Verification Plan  documentation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cv32a6-step1-design-verification-plan">
+<h1>CV32A6-step1 Design Verification Plan<a class="headerlink" href="#cv32a6-step1-design-verification-plan" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-dvplan_intro"></span><section id="introduction">
+<span id="dvplan-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>The objective of this document is to describe what must be covered to verify CVA6 RISC-V processor.</p>
+<section id="license">
+<h3>License<a class="headerlink" href="#license" title="Permalink to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Copyright 2022 Thales</div>
+<div class="line">SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1</div>
+<div class="line">Licensed under the Solderpad Hardware License v 2.1 (the “License”);
+you may not use this file except in compliance with the License, or,
+at your option, the Apache License version 2.0. You may obtain a copy
+of the License at <a class="reference external" href="https://solderpad.org/licenses/SHL-2.1/">https://solderpad.org/licenses/SHL-2.1/</a>.</div>
+<div class="line">Unless required by applicable law or agreed to in writing, any work
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.</div>
+</div>
+</section>
+<section id="standards-compliance">
+<h3>Standards Compliance<a class="headerlink" href="#standards-compliance" title="Permalink to this heading"></a></h3>
+<p>To ease the reading, the reference to these specifications can be implicit in the requirements below. For the sake of precision, the requirements identify the versions of RISC-V extensions from these specifications.</p>
+<ul class="simple">
+<li><p><strong>[CVA6req]</strong> “CVA6 requirement specification”, <a class="reference external" href="https://github.com/openhwgroup/cva6/blob/master/docs/specifications/cva6_requirement_specification.rst">https://github.com/openhwgroup/cva6/blob/master/docs/specifications/cva6_requirement_specification.rst</a>, HASH#767c465.</p></li>
+<li><p><strong>[CVA6design]</strong> “CVA6 design document”, TO BE COMPLETED</p></li>
+<li><p><strong>[RVunpriv]</strong> “The RISC-V Instruction Set Manual, Volume I: User-Level ISA, Document Version 20191213”, Editors Andrew Waterman and Krste Asanović, RISC-V Foundation, December 13, 2019.</p></li>
+<li><p><strong>[RVpriv]</strong> “The RISC-V Instruction Set Manual, Volume II: Privileged Architecture, Document Version 20211203”, Editors Andrew Waterman, Krste Asanović and John Hauser, RISC-V Foundation, December 4, 2021.</p></li>
+<li><p><strong>[RVdbg]</strong> “RISC-V External Debug Support, Document Version 0.13.2”, Editors Tim Newsome and Megan Wachs, RISC-V Foundation, March 22, 2019.</p></li>
+<li><p><strong>[RVcompat]</strong> “RISC-V Architectural Compatibility Test Framework”, <a class="reference external" href="https://github.com/riscv-non-isa/riscv-arch-test">https://github.com/riscv-non-isa/riscv-arch-test</a>.</p></li>
+<li><p><strong>[AXI]</strong> AXI Specification, <a class="reference external" href="https://developer.arm.com/documentation/ihi0022/hc">https://developer.arm.com/documentation/ihi0022/hc</a>.</p></li>
+<li><p><strong>[CV-X-IF]</strong> Placeholder for the CV-X-IF coprocessor interface currently prepared at OpenHW Group; current version in <a class="reference external" href="https://docs.openhwgroup.org/projects/openhw-group-core-v-xif/">https://docs.openhwgroup.org/projects/openhw-group-core-v-xif/</a>.</p></li>
+<li><p><strong>[OpenPiton]</strong> “OpenPiton Microarchitecture Specification”, Princeton University, <a class="reference external" href="https://parallel.princeton.edu/openpiton/docs/micro_arch.pdf">https://parallel.princeton.edu/openpiton/docs/micro_arch.pdf</a>.</p></li>
+</ul>
+<p>CV32A6 is a 32-bit processor fully compliant with RISC-V specifications: [RVunpriv], [RVpriv] and [RVdbg] and passes [RVcompat] compatibility tests, as requested by [GEN-10] in [CVA6req].</p>
+</section>
+<section id="getting-start-verification">
+<h3>Getting start verification<a class="headerlink" href="#getting-start-verification" title="Permalink to this heading"></a></h3>
+<p>[TO BE COMPLETED]</p>
+</section>
+<section id="documentation-framework">
+<h3>Documentation framework<a class="headerlink" href="#documentation-framework" title="Permalink to this heading"></a></h3>
+<p>The framework of this document is aligned with the CVA6 design document [CVA6design].</p>
+<p>Description of the framework:</p>
+<ul class="simple">
+<li><p>Processor is a subsystem</p></li>
+<li><p>Processor subsystems are split into several modules</p></li>
+<li><p>Modules are verified separately</p></li>
+</ul>
+</section>
+<section id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this heading"></a></h3>
+<div class="line-block">
+<div class="line">Jean-Roch Coulon - Thales</div>
+</div>
+<p>[TO BE COMPLETED]</p>
+</section>
+</section>
+<span id="document-dvplan_csr-access"></span><section id="module-csr-access-verification">
+<h2>Module: CSR ACCESS VERIFICATION<a class="headerlink" href="#module-csr-access-verification" title="Permalink to this heading"></a></h2>
+<section id="feature-machinescratch-mscratch">
+<h3>Feature: machineScratch(MSCRATCH)<a class="headerlink" href="#feature-machinescratch-mscratch" title="Permalink to this heading"></a></h3>
+<section id="sub-feature-000-mscratch">
+<h4>Sub-feature: 000_MSCRATCH<a class="headerlink" href="#sub-feature-000-mscratch" title="Permalink to this heading"></a></h4>
+<section id="item-000">
+<h5>Item: 000<a class="headerlink" href="#item-000" title="Permalink to this heading"></a></h5>
+<ul>
+<li><p><strong>Requirement location:</strong> riscv-privileged-20211203</p></li>
+<li><p><strong>Feature Description</strong></p>
+<p>To verify the Power-on Reset value for MSCRATCH CSR.</p>
+<p>Address Offset : 0x340<br />Width (bits) : 32<br />Access Type : RW<br />Reset Value : 0x00000000<br />priviliged mode : Machine</p>
+</li>
+<li><p><strong>Verification Goals</strong></p>
+<p>Read MSCRATCH CSR to check default POR value that should be equal to 0x00000000.</p>
+</li>
+<li><p><strong>Pass/Fail Criteria:</strong> Check RM</p></li>
+<li><p><strong>Test Type:</strong> Directed SelfChk</p></li>
+<li><p><strong>Coverage Method:</strong> N/A</p></li>
+<li><p><strong>Applicable Cores:</strong> CV32A6_v0.1.0</p></li>
+<li><p><strong>Unique verification tag:</strong> VP_csr-test-ident_F000_S000_I000</p></li>
+<li><p><strong>Link to Coverage:</strong></p></li>
+<li><p><strong>Comments</strong></p>
+<p><em>(none)</em></p>
+</li>
+</ul>
+</section>
+<section id="item-001">
+<h5>Item: 001<a class="headerlink" href="#item-001" title="Permalink to this heading"></a></h5>
+<ul>
+<li><p><strong>Requirement location:</strong> riscv-privileged-20211203</p></li>
+<li><p><strong>Feature Description</strong></p>
+<p>Verifying R/W access of a MSCRATCH CSR by writing random valid data and Read back CSR values to check correctness.</p>
+</li>
+<li><p><strong>Verification Goals</strong></p>
+<p>The read values of MSCRATCH CSR should matches with written random data values.</p>
+</li>
+<li><p><strong>Pass/Fail Criteria:</strong> NDY (Not Defined Yet)</p></li>
+<li><p><strong>Test Type:</strong> NDY (Not Defined Yet)</p></li>
+<li><p><strong>Coverage Method:</strong> NDY (Not Defined Yet)</p></li>
+<li><p><strong>Applicable Cores:</strong> CV32A6_v0.1.0</p></li>
+<li><p><strong>Unique verification tag:</strong> VP_csr-test-ident_F000_S000_I001</p></li>
+<li><p><strong>Link to Coverage:</strong></p></li>
+<li><p><strong>Comments</strong></p>
+<p><em>(none)</em></p>
+</li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Thales Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -23,8 +23,4 @@ CV32A6-step1 Design Verification Plan
    :caption: Contents:
 
    dvplan_intro
-   dvplan_FRONTEND
-   dvplan_ISA
-   dvplan_CVXIF
-   dvplan_AXI
-
+   dvplan_csr-access
